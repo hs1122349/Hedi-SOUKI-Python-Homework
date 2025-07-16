@@ -1,0 +1,45 @@
+# Session 2 :
+
+# 1. Find numbers divisible by 3 between 1000 and 2500
+
+print("Numbers divisible by 3 from 1000 to 2500:")
+for number in range(1000, 2501):
+    if number % 3 == 0:
+        print(number, end=", ")
+print("\n")  # for clean separation
+
+
+# 2. Convert month name to number of days
+
+month = input("Enter the name of a month (e.g. January): ").strip().lower()
+
+# Convert month to number of days using if-elif
+if month in ("january", "march", "may", "july", "august", "october", "december"):
+    print("This month has 31 days.")
+elif month in ("april", "june", "september", "november"):
+    print("This month has 30 days.")
+elif month == "february":
+    print("This month has 28 or 29 days depending on leap year.")
+else:
+    print("Invalid month name.")
+
+
+# 3. Reverse a word entered by the user
+
+word = input("Enter a word to reverse: ")
+reversed_word = word[::-1]
+print("Reversed word:", reversed_word)
+
+
+# 4. FizzBuzz style - Wonderful/Nice/Perfect
+
+print("\nChecking numbers from 1 to 50:")
+for i in range(1, 51):
+    if i % 3 == 0 and i % 5 == 0:
+        print("Perfect")
+    elif i % 3 == 0:
+        print("Wonderful")
+    elif i % 5 == 0:
+        print("Nice")
+    else:
+        print(i)
