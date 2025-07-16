@@ -1,0 +1,55 @@
+# Task 1: Check if a number is Prime
+
+# This function checks if a number is prime
+def is_prime(n):
+    # First, check if n is less than or equal to 1
+    if n <= 1:
+        return False  # Not a prime number
+    
+    # Check if n can be divided by any number between 2 and sqrt(n)
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False  # Found a divisor, so not prime
+    
+    return True  # No divisors found, it's a prime number
+
+# Example usage:
+number = int(input("Enter a number: "))
+if is_prime(number):
+    print("Prime number")
+else:
+    print("Not a prime number")
+
+
+# Task 2: French Tax Deduction Estimation
+
+# Input variables
+RFR = float(input("Enter your tax reference income (RFR): "))
+number_of_half_shares = int(input("Enter number of half shares: "))
+expenses_home_help = float(input("Enter amount spent on home help services: "))
+expenses_childcare = float(input("Enter amount spent on childcare for children under 6: "))
+expenses_energy_improvement = float(input("Enter amount spent on energy improvements: "))
+
+# Rule 1: Check income limit (example: €28,000)
+limit_RFR = 28000
+if RFR > limit_RFR:
+    print("No tax reduction, income too high.")
+else:
+    # Rule 2: Family quotient reduction
+    max_deduction = number_of_half_shares * 1759
+
+    # Rule 3: Calculate tax credits
+    credit_home_help = 0.5 * expenses_home_help
+    credit_childcare = 0.5 * min(expenses_childcare, 3500)
+    
+    # Let's say the energy credit is fixed for now
+    credit_energy = 0.3 * expenses_energy_improvement  # Example rate
+
+    # Sum up all credits
+    total_credits = credit_home_help + credit_childcare + credit_energy
+
+    # Rule 4: Apply max deduction limit
+    if total_credits > max_deduction:
+        total_credits = max_deduction
+
+    print("Eligible tax credit: €", round(total_credits, 2))
